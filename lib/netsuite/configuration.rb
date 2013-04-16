@@ -12,8 +12,7 @@ module NetSuite
 
     def connection
       unless attributes[:connection]
-        attributes[:connection] = Savon::Client.new(self.wsdl)
-        attributes[:connection].http.read_timeout = read_timeout
+        attributes[:connection] = Savon::Client.new(:log_level => :debug, :namespaces => namespaces, :soap_header => auth_header, :wsdl => self.wsdl, :read_timeout => read_timeout)
       end
 
       attributes[:connection]
@@ -73,6 +72,16 @@ module NetSuite
             'platformCore:role' => role.attributes!
           }
         }
+      }
+    end
+
+    def namespaces
+      {
+        'xmlns:platformMsgs' => "urn:messages_#{NetSuite::Configuration.api_version}.platform.webservices.netsuite.com",
+        'xmlns:platformCore' => "urn:core_#{NetSuite::Configuration.api_version}.platform.webservices.netsuite.com",
+        'xmlns:platformCommon' => "urn:common_#{NetSuite::Configuration.api_version}.platform.webservices.netsuite.com",
+        'xmlns:listRel' => "urn:relationships_#{NetSuite::Configuration.api_version}.lists.webservices.netsuite.com",
+        'xmlns:tranSales' => "urn:sales_#{NetSuite::Configuration.api_version}.transactions.webservices.netsuite.com"
       }
     end
     
@@ -152,7 +161,7 @@ module NetSuite
     end
 
     def logger
-      attributes[:logger] ||= NetSuite::XmlLogger.new (log && !log.empty?) ? log : STDOUT
+      attributes[:logger] ||= NetSuite::XmlLogger.new(log && !log.empty?) ? log : STDOUT
     end
 
   end

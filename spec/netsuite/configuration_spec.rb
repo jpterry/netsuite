@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 describe NetSuite::Configuration do
+  include Savon::SpecHelper
+
   let(:config) { NetSuite::Configuration }
+
+  before(:all) { savon.mock!   }
+  after(:all)  { savon.unmock! }
 
   before do
     config.reset!
@@ -18,6 +23,10 @@ describe NetSuite::Configuration do
 
   describe '#connection' do
     it 'returns a Savon::Client object that allows requests to the service' do
+      config.email 'me@example.com'
+      config.password 'test_pass_123'
+      config.account 'TSTDRV123'
+      config.role 3
       config.connection.should be_kind_of(Savon::Client)
     end
   end

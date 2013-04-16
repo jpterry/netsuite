@@ -34,7 +34,7 @@ module NetSuite
       end
 
       def build_response
-        Response.new(:success => success?, header: response_header, :body => response_body)
+        Response.new(:success => success?, :header => response_header, :body => response_body)
       end
 
       def success?

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe NetSuite::Records::CustomerRefund do
+  include Savon::SpecHelper
+
   let(:refund) { NetSuite::Records::CustomerRefund.new }
   let(:memo) { NetSuite::Records::CreditMemo.new }
   let(:response) { NetSuite::Response.new(:success => true, :body => { :internal_id => '1' }) }
