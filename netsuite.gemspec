@@ -21,4 +21,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rspec',                 '~> 2.10'
   gem.add_development_dependency 'savon_spec',            '~> 1.3.0'
   gem.add_development_dependency 'autotest-standalone',   '~> 4.5'
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'ci_reporter',           '~> 1.8'
+
 end
