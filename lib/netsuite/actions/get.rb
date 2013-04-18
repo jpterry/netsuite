@@ -11,7 +11,7 @@ module NetSuite
       private
 
       def request
-        connection.call(:get, :attributes => request_attributes)
+        connection.call(:get, :message => request_body)
       end
 
       def soap_type
@@ -39,13 +39,6 @@ module NetSuite
         body[:attributes!]['platformMsgs:baseRef']['typeId']     = @options[:type_id]     if @options[:type_id]
         body[:attributes!]['platformMsgs:baseRef']['type']       = soap_type              unless @options[:custom]
         body
-      end
-
-      def request_attributes
-        {
-          :type => soap_type,
-          :internal_id => @options[:internal_id]
-        }
       end
 
       def success?

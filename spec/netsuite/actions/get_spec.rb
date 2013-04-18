@@ -9,7 +9,7 @@ describe NetSuite::Actions::Get do
   describe 'Customer' do
     before do
       get_customer_fixture = File.read("spec/support/fixtures/get/get_customer.xml")
-      savon.expects(:get).with({
+      savon.expects(:get).with(:message => {
         'platformMsgs:baseRef' => {},
         :attributes! => {
           'platformMsgs:baseRef' => {
@@ -34,7 +34,7 @@ describe NetSuite::Actions::Get do
   describe 'Invoice' do
     before do
       get_invoice_fixture = File.read("spec/support/fixtures/get/get_invoice.xml")
-      savon.expects(:get).with({
+      savon.expects(:get).with(:message => {
         'platformMsgs:baseRef' => {},
         :attributes! => {
           'platformMsgs:baseRef' => {
