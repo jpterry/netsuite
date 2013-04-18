@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe NetSuite::Actions::Add do
+  include Savon::SpecHelper
+
+  before(:all) { savon.mock!   }
+  after(:all)  { savon.unmock! }
 
   context 'Customer' do
     let(:customer) do
@@ -8,6 +12,7 @@ describe NetSuite::Actions::Add do
     end
 
     before do
+      add_customer_fixture = File.read("spec/support/fixtures/add/add_customer.xml")
       savon.expects(:add).with({
         'platformMsgs:record' => {
           'listRel:entityId'    => 'Shutter Fly',
@@ -18,7 +23,7 @@ describe NetSuite::Actions::Add do
             'xsi:type' => 'listRel:Customer'
           }
         }
-      }).returns(:add_customer)
+      }).returns(add_customer_fixture)
     end
 
     it 'makes a valid request to the NetSuite API' do
@@ -38,6 +43,7 @@ describe NetSuite::Actions::Add do
     end
 
     before do
+      add_invoice_fixture = File.read("spec/support/fixtures/add/add_invoice.xml")
       savon.expects(:add).with({
         'platformMsgs:record' => {
           'tranSales:source' => 'Google'
@@ -47,7 +53,7 @@ describe NetSuite::Actions::Add do
             'xsi:type' => 'tranSales:Invoice'
           }
         }
-      }).returns(:add_invoice)
+      }).returns(add_invoice_fixture)
     end
 
     it 'makes a valid request to the NetSuite API' do

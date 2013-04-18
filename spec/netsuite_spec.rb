@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe NetSuite do
+  include Savon::SpecHelper
   let(:config) { NetSuite::Configuration }
 
   before do

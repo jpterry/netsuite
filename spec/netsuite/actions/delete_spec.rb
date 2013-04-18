@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe NetSuite::Actions::Delete do
+  include Savon::SpecHelper
+
+  before(:all) { savon.mock!   }
+  after(:all)  { savon.unmock! }
 
   context 'Customer' do
     let(:customer) do
@@ -8,6 +12,7 @@ describe NetSuite::Actions::Delete do
     end
 
     before do
+      delete_fixture = File.read("spec/support/fixtures/delete/delete_customer.xml")
       savon.expects(:delete).with({
         'platformMsgs:baseRef' => {},
         :attributes! => {
@@ -17,7 +22,7 @@ describe NetSuite::Actions::Delete do
             'xsi:type'   => 'platformCore:RecordRef'
           }
         }
-      }).returns(:delete_customer)
+      }).returns(delete_fixture)
     end
 
     it 'makes a valid request to the NetSuite API' do
