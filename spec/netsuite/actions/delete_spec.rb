@@ -13,7 +13,7 @@ describe NetSuite::Actions::Delete do
 
     before do
       delete_fixture = File.read("spec/support/fixtures/delete/delete_customer.xml")
-      savon.expects(:delete).with({
+      savon.expects(:delete).with(:message => {
         'platformMsgs:baseRef' => {},
         :attributes! => {
           'platformMsgs:baseRef' => {

@@ -10,7 +10,7 @@ module NetSuite
       private
 
       def request
-        connection.call(:add)
+        connection.call(:add, :message => request_body)
       end
 
       # <soap:Body>
