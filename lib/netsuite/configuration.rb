@@ -81,7 +81,8 @@ module NetSuite
         'xmlns:platformCore'   => "urn:core_#{NetSuite::Configuration.api_version}.platform.webservices.netsuite.com",
         'xmlns:platformCommon' => "urn:common_#{NetSuite::Configuration.api_version}.platform.webservices.netsuite.com",
         'xmlns:listRel'        => "urn:relationships_#{NetSuite::Configuration.api_version}.lists.webservices.netsuite.com",
-        'xmlns:tranSales'      => "urn:sales_#{NetSuite::Configuration.api_version}.transactions.webservices.netsuite.com"
+        'xmlns:tranSales'      => "urn:sales_#{NetSuite::Configuration.api_version}.transactions.webservices.netsuite.com",
+        'xmlns:actSched'       => "urn:scheduling_#{NetSuite::Configuration.api_version}.activities.webservices.netsuite.com"
       }
     end
     
