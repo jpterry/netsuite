@@ -9,8 +9,8 @@ module NetSuite
 
       actions :get, :add, :delete, :update
 
-      fields :title, :message, :phone, :status, :priority, :start_date, :start_time, :end_date,
-        :completed_date, :timed_event, :access_level
+      fields :title, :message, :phone, :status, :priority, :start_date, :end_date,
+        :start_time, :end_time, :completed_date, :timed_event, :access_level, :timed_event
 
       field :contact_list, ContactList
 
