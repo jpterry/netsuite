@@ -9,7 +9,7 @@ module NetSuite
       end
 
       def request
-        connection.call(:update)
+        connection.call(:update, :message => request_body)
       end
 
       # <platformMsgs:update>

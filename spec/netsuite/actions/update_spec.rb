@@ -12,7 +12,7 @@ describe NetSuite::Actions::Update do
 
     before do
       update_customer_fixture = File.read("spec/support/fixtures/update/update_customer.xml")
-      savon.expects(:update).with({
+      savon.expects(:update).with(:message => {
         'platformMsgs:record' => {
           'listRel:entityId'    => 'Shutter Fly',
           'listRel:companyName' => 'Shutter Fly, Inc.'
@@ -42,7 +42,7 @@ describe NetSuite::Actions::Update do
 
     before do
       update_invoice_fixture = File.read("spec/support/fixtures/update/update_invoice.xml")
-      savon.expects(:update).with({
+      savon.expects(:update).with(:message => {
         'platformMsgs:record' => {
           'tranSales:source' => 'Google',
         },
