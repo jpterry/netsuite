@@ -13,7 +13,7 @@ describe NetSuite::Actions::Add do
 
     before do
       add_customer_fixture = File.read("spec/support/fixtures/add/add_customer.xml")
-      savon.expects(:add).with({
+      savon.expects(:add).with(:message => {
         'platformMsgs:record' => {
           'listRel:entityId'    => 'Shutter Fly',
           'listRel:companyName' => 'Shutter Fly, Inc.'
@@ -44,7 +44,7 @@ describe NetSuite::Actions::Add do
 
     before do
       add_invoice_fixture = File.read("spec/support/fixtures/add/add_invoice.xml")
-      savon.expects(:add).with({
+      savon.expects(:add).with(:message => {
         'platformMsgs:record' => {
           'tranSales:source' => 'Google'
         },

@@ -41,6 +41,15 @@ module NetSuite
         hash
       end
 
+
+      #TODO: Generalize this
+      def ==(o)
+        o.equal?(self) ||
+          o.instance_of?(self.class) &&
+          o.external_id == external_id &&
+          o.internal_id == internal_id &&
+          o.attributes == attributes
+      end
     end
   end
 end

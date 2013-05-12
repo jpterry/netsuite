@@ -11,7 +11,7 @@ module NetSuite
       private
 
       def request
-        connection.call(:get)
+        connection.call(:get, :message => request_body)
       end
 
       def soap_type
