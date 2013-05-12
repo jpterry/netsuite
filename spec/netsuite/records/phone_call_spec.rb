@@ -17,7 +17,7 @@ describe NetSuite::Records::PhoneCall do
 
   describe 'to_record' do
     it 'should be verified with our params' do
-      fail 'Not Verified.'
+      pending
     end
   end
 end

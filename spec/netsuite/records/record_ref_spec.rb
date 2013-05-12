@@ -84,4 +84,12 @@ describe NetSuite::Records::RecordRef do
     end
   end
 
+  describe "#==" do
+    it "considers two contrcuted RecrodRefs equivalent" do
+      r1, r2 = 2.times.map { NetSuite::Records::RecordRef.new({:internal_id => 1, :external_id => 'joe', :attributes => {:name => 'SOMETHING-new'}}) }
+      r1.should ==(r2)
+    end
+
+  end
+
 end
