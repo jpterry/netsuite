@@ -1,7 +1,6 @@
 require 'set'
 
 require 'savon'
-require 'netsuite/version'
 require 'netsuite/errors'
 require 'netsuite/xml_logger'
 require 'netsuite/core_ext/string/lower_camelcase'
